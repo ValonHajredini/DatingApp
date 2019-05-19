@@ -1,3 +1,4 @@
+import { NavComponent } from './Components/nav/nav.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -6,12 +7,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ValueComponent } from './value/value.component';
+import { HomeComponent } from './Components/home/home.component';
+import { AuthService } from './_Services/auth.service';
+import { RegisterComponent } from './Components/register/register.component';
 
 @NgModule({
    declarations: [
       AppComponent,
-      ValueComponent
+      NavComponent,
+      HomeComponent,
+      RegisterComponent
    ],
    imports: [
       BrowserModule,
@@ -19,7 +24,9 @@ import { ValueComponent } from './value/value.component';
       FormsModule,
       HttpClientModule
    ],
-   providers: [],
+   providers: [
+      AuthService
+   ],
    bootstrap: [
       AppComponent
    ]
