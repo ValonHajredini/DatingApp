@@ -24,7 +24,7 @@ namespace DatingApp.API.Controllers
             _config = config;
             _repo = repo;
         }
-        
+
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
@@ -42,10 +42,13 @@ namespace DatingApp.API.Controllers
 
             return StatusCode(201);
         }
-        
+
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
+
+            // throw new Exception("Computer ses no!");
+
             var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
             if (userFromRepo == null)
@@ -73,9 +76,11 @@ namespace DatingApp.API.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return Ok(new {
+            return Ok(new
+            {
                 token = tokenHandler.WriteToken(token)
             });
+
         }
 
 
