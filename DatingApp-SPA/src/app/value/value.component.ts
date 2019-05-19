@@ -16,10 +16,10 @@ export class ValueComponent implements OnInit {
   }
   getValues() {
     this.http.get(`${environment.apiServer}/api/values`).subscribe((values: any) => {
-      console.log('values: ', values);
+      // console.log('values: ', values);
       this.values = values;
     }, error => {
-      console.log('ERROR: ', error);
+      // console.log('ERROR: ', error);
     });
   }
 }
