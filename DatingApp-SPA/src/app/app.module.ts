@@ -1,3 +1,4 @@
+import { AlertifyService } from './_Services/alertify.service';
 
 import { NavComponent } from './Components/nav/nav.component';
 
@@ -27,7 +28,8 @@ import { ErrorInterceptorProvider } from './_Services/error.interceptor';
    ],
    providers: [
       AuthService,
-      ErrorInterceptorProvider
+      ErrorInterceptorProvider,
+      AlertifyService
    ],
    bootstrap: [
       AppComponent
