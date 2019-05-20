@@ -10,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
   model: any = {};
 
-  constructor(private authService: AuthService, private alertify: AlertifyService) { }
+  public username: string = '';
+  constructor(public authService: AuthService, private alertify: AlertifyService) { }
 
   ngOnInit() {
+    this.getUsername();
   }
 
   public login() {
@@ -20,9 +22,11 @@ export class NavComponent implements OnInit {
     this.authService.login(this.model).subscribe(next => {
       this.alertify.success('Loged In Sucesfully');
     }, error => {
-      this.alertify.error(error)
+      this.alertify.error(error);
     });
   }
+
+  
 
   public logedIn() {
     const token = localStorage.getItem('coreToken');
@@ -31,6 +35,13 @@ export class NavComponent implements OnInit {
   public logout() {
     localStorage.removeItem('coreToken');
     this.alertify.message('Loged Out');
+  }
+  getUsername() {
+    if(this.logedIn()) {
+      // const dToken = this.authService.getUsername();
+      // this.username = dToken.unique_name;
+    }
+    
   }
 
 }
